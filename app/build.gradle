@@ -53,6 +53,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$navigationVersion"
     implementation "androidx.navigation:navigation-ui:$navigationVersion"
 
+
     // Lifecycle (Livedata and ViewModel) dependencies
     def lifecycleVersion = '2.3.1'
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
