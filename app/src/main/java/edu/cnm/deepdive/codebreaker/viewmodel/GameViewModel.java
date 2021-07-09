@@ -24,6 +24,7 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
 
   private final GameRepository repository;
   private final MutableLiveData<Game> game;
+  private final MutableLiveData<String> pool;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
   private final SharedPreferences preferences;
@@ -32,6 +33,7 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     super(application);
     repository = new GameRepository(application);
     game = new MutableLiveData<>();
+    pool = new MutableLiveData<>("ABCDEF");
     throwable = new MutableLiveData<>();
     pending = new CompositeDisposable();
     preferences = PreferenceManager.getDefaultSharedPreferences(application);
@@ -42,6 +44,10 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     return game;
   }
 
+  public LiveData<String> getPool() {
+    return pool;
+  }
+
   public LiveData<Throwable> getThrowable() {
     return throwable;
   }
@@ -50,7 +56,7 @@ public class GameViewModel extends AndroidViewModel implements LifecycleObserver
     throwable.setValue(null);
     pending.add(
         repository
-            .create("ABCDEF", getCodeLengthPref())
+            .create(pool.getValue(), getCodeLengthPref())
             .subscribe(
                 game::postValue,
                 this::handleThrowable
