@@ -50,11 +50,10 @@ public class Game {
   private int length;
 
   @Expose
-  @ColumnInfo(index = true)
   private boolean solved;
 
   @ColumnInfo(name = "pool_size", index = true)
-private int poolSize;
+  private int poolSize;
 
   public long getId() {
     return id;
@@ -116,3 +115,4 @@ private int poolSize;
   }
 
 }
+
