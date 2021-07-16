@@ -21,19 +21,19 @@ public class ScoreboardFragment extends Fragment {
   private GameViewModel viewModel;
   private FragmentScoreboardBinding binding;
 
-  public View onCreateView(@NonNull LayoutInflater inflater,
-      ViewGroup container, Bundle savedInstanceState) {
-   super.onCreateView(inflater, container, savedInstanceState);
-   binding = FragmentScoreboardBinding.inflate(inflater, container, false);
-   // TODO Attach listeners to sliders.
+  public View onCreateView(
+      @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    super.onCreateView(inflater, container, savedInstanceState);
+    binding = FragmentScoreboardBinding.inflate(inflater, container, false);
+    // TODO Attach listeners to sliders.
     return binding.getRoot();
   }
 
   @Override
-  public void onViewCreated(@NonNull @NotNull View view,
-      @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     viewModel = new ViewModelProvider(getActivity()).get(GameViewModel.class);
-    //TODO Add observers.
+    // TODO Add observers.
   }
+
 }
